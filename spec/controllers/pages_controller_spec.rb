@@ -12,7 +12,7 @@ describe PagesController do
     it "should have the right title" do
       get 'home'
       response.should have_selector("title",
-                        :content => "WDPAnnounce | Home")
+                        :content => "WDP Announce | Home")
     end
   end
 
@@ -25,7 +25,7 @@ describe PagesController do
   it "should have the right title" do
       get 'contact'
       response.should have_selector("title",
-                        :content => "WDPAnnounce | Contact")
+                        :content => "WDP Announce | Contact")
     end
   end
 
@@ -38,7 +38,7 @@ describe PagesController do
     it "should have the right title" do
       get 'about'
       response.should have_selector("title",
-                        :content => "WDPAnnounce | About")
+                        :content => "WDP Announce | About")
     end    
   end
 
@@ -51,7 +51,7 @@ describe PagesController do
     it "should have the right title" do
       get 'help'
       response.should have_selector("title",
-                        :content => "WDPAnnounce | Help")
+                        :content => "WDP Announce | Help")
     end
   
   end
