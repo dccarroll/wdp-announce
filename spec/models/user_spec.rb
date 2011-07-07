@@ -15,7 +15,11 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @attr = { :name => "Example User", :email => "example@westdenverprep.org", :grade =>7 }
+    @attr = { :name => "Example User", 
+              :email => "example@westdenverprep.org", 
+              :grade => 7,
+              :password => "foobarbaz",
+              :password_confirmation => "foobarbaz" }
   end
 
   it "should create a new instance given valid attributes" do
@@ -69,4 +73,56 @@ describe User do
     user_with_duplicate_email.should_not be_valid
   end
   
+  describe "password validations" do
+    it "should require a password" do
+      User.new(@attr.merge(:password =>"", :password_confirmation =>""))
+      should_not be_valid
+    end
+    
+    it "should require a matching password confirmation" do
+      User.new(@attr.merge(:password_confirmation =>"foobarbizz"))
+      should_not be_valid
+    end
+    
+    it "should reject short passwords" do
+      tooshort = "12345"
+      User.new(@attr.merge(:password => tooshort, :password_confirmation => tooshort))
+      should_not be_valid
+    end
+    
+    it "should reject long passwords" do
+      toolong = "a"*41
+      User.new(@attr.merge(:password => toolong, :password_confirmation => toolong ))
+      should_not be_valid  
+    end
+  end
+  
+  describe "password encryption" do
+    before(:each) do 
+      @user = User.create!(@attr)
+    end
+    
+    it "should have an encrypted password attribute" do
+      @user.should respond_to(:encrypted_password)
+    end
+    
+    it "should set the encrypted password" do
+      @user.encrypted_password.should_not be_blank
+    end
+  end
+  
+  describe "has_password? method" do
+    before(:each) do 
+      @user = User.create!(@attr)
+    end
+  
+    it "should be true if the passwords match" do
+      @user.has_password?(@attr[:password]).should be_true
+    end    
+
+    it "should be false if the passwords don't match" do
+      @user.has_password?("invalid").should be_false
+    end 
+  end
+
 end
