@@ -1,0 +1,3 @@
+Autotest.add_hook :initialize do |at| 
+	%w{.svn .hg .git vendor rerun.txti db log tmp .DS_store Gemfile.lock}.each {|exception| at.add_exception(exception)} 
+end
