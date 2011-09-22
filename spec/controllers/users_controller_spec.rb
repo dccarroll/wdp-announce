@@ -289,6 +289,12 @@ describe UsersController do
         delete :destroy, :id => @user
         response.should redirect_to(root_path)
       end
+    
+      it "should not show delete links" do
+        get :index
+        response.should_not have_selector("a", :'data-method' => "delete",
+                                               :content => "delete")
+      end
     end
 
     describe "as an admin user" do
@@ -308,6 +314,13 @@ describe UsersController do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
       end
+      
+      it "should show delete links" do
+        get :index
+        response.should have_selector("a", :'data-method' => "delete",
+                                           :content => "delete")
+      end
+      
     end
   end
   
