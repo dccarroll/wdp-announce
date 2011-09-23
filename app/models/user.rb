@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :name, :email, :grade, :password, :password_confirmation
   
+  has_many :announcements, :dependent => :destroy
+  
   email_regex = /\A[\w+\-.]+@westdenverprep+\.org+\z/i
   
   validates :name,  :presence   => true,

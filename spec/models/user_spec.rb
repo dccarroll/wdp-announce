@@ -158,4 +158,28 @@ describe User do
       @user.should be_admin
     end
   end
+  
+  describe "announcement associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @an1 = Factory(:announcement, :user => @user, :created_at => 1.day.ago)
+      @an2 = Factory(:announcement, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have an announcment attribute" do
+      @user.should respond_to(:announcements)
+    end
+
+    it "should have the right announcements in the right order" do
+      @user.announcements.should == [@an2, @an1]
+    end
+    
+    it "should destroy associated announcements" do
+      @user.destroy
+      [@an1, @an2].each do |announcement|
+        Announcement.find_by_id(announcement.id).should be_nil
+      end
+    end
+  end
 end
