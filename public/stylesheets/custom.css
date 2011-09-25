@@ -195,3 +195,66 @@ ul.users {
 .users li {
   list-style: none;
 }
+
+
+/* Announcements */
+h1.announcement {
+  margin-bottom: 0.3em;
+}
+
+table.announcements {
+  margin-top: 1em;
+}
+
+table.announcements tr {
+  height: 70px;
+}
+
+table.announcements tr td.gravatar {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  width: 50px;
+}
+
+table.announcements tr td.announcement {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.announcements tr td.announcement span.timestamp {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+table.announcements tr td.announcement span.grade {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
+}
+
+div.user_info a {
+  text-decoration: none;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.announcements {
+  font-size: 80%;
+}
+
+form.new_announcement {
+  margin-bottom: 2em;
+}
+
+form.new_announcement textarea {
+  height: 4em;
+  margin-bottom: 0;
+}

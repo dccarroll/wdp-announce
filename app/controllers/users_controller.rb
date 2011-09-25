@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @title = @user.name
+    @announcements = @user.announcements.paginate(:page => params[:page])
   end
   
   def create
@@ -54,9 +55,6 @@ class UsersController < ApplicationController
   end
   
   private
-    def authenticate
-      deny_access unless signed_in?
-    end
     
     def unathenticate
       redirect_to(root_path) unless !signed_in?

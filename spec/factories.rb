@@ -15,7 +15,7 @@ Factory.define :announcement do |announcement|
   announcement.grade_6 true
   announcement.grade_7 true
   announcement.grade_8 true
-  announcement.start_date Date.today
-  announcement.end_date Date.today
+  announcement.start_date Date.current
+  announcement.end_date Date.current
   announcement.association :user
 end

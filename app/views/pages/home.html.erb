@@ -1,8 +1,21 @@
-<h1>WDP Announce</h1>
-<p>
-  This is the home page for the
-  <a href="http://wdpannounce.net">West Denver Prep Announcements</a> application.
-</p>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="announcement">Create a new announcement</h1>
+        <%= render 'shared/announcement_form' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1>WDP Announce</h1>
+  <p>
+    This is the home page for the
+    <a href="http://wdpannounce.net">West Denver Prep Announcements</a> application.
+  </p>
 
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
-
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>

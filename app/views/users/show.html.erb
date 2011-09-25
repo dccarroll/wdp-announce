@@ -5,10 +5,17 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <% unless @user.announcements.empty? %>
+        <table class="announcements" summary="User announcements">
+          <%= render @announcements %>
+        </table>
+        <%= will_paginate @announcements %>
+      <% end %>
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
       <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
+      <strong>Announcements</strong> <%= @user.announcements.count %>
       <% if @user == current_user %>
          <%= link_to "Change settings", edit_user_path(@user) %>
       <% end %>
