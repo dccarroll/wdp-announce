@@ -114,7 +114,7 @@ describe UsersController do
 
       before(:each) do
         @attr = { :name => "", :email => "", :password => "",
-                  :password_confirmation => "" }
+                  :password_confirmation => "", :grade =>"" }
       end
 
       it "should not create a user" do
@@ -137,7 +137,7 @@ describe UsersController do
     describe "success" do
 
       before(:each) do
-        @attr = { :name => "New User", :email => "user@westdenverprep.org",
+        @attr = { :name => "New User", :email => "user@westdenverprep.org", :grade => "0",
                   :password => "foobar", :password_confirmation => "foobar" }
       end
 

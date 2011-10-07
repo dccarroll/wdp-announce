@@ -2,6 +2,7 @@
 Factory.define :user do |user|
   user.name                  "Daniel Carroll"
   user.email                 "dcarroll@westdenverprep.org"
+  user.grade                 "6"
   user.password              "foobar"
   user.password_confirmation "foobar"
 end

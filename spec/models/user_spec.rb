@@ -31,6 +31,11 @@ describe User do
     no_name_user.should_not be_valid
   end
   
+  it "should require a grade" do
+    no_grade_user = User.new(@attr.merge(:grade => ""))
+    no_grade_user.should_not be_valid
+  end
+  
   it "should reject names that are too long" do
     long_name = "z" * 51
     long_name_user = User.new(@attr.merge(:name => long_name))
@@ -167,7 +172,7 @@ describe User do
       @an2 = Factory(:announcement, :user => @user, :created_at => 1.hour.ago)
     end
 
-    it "should have an announcment attribute" do
+    it "should have an announcement attribute" do
       @user.should respond_to(:announcements)
     end
 
@@ -193,9 +198,9 @@ describe User do
         @user.feed.include?(@an2).should be_true
       end
 
-      it "should not include a different user's microposts" do
-        an3 = Factory(:announcement,
-                      :user => Factory(:user, :email => Factory.next(:email)))
+      it "should not include a different grade's' microposts" do
+        @user = Factory(:user, :grade => 6)
+        an3 = Factory(:announcement, :user => @user, :grade_6 => FALSE)
         @user.feed.include?(an3).should be_false
       end
     end

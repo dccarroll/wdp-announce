@@ -27,6 +27,7 @@ describe "Users" do
           visit signup_path
           fill_in "Name",         :with => "Example User"
           fill_in "Email",        :with => "user123@westdenverprep.org"
+          fill_in "Grade",        :with => "7"
           fill_in "Password",     :with => "foobar"
           fill_in "Confirmation", :with => "foobar"
           click_button
