@@ -1,0 +1,27 @@
+<tr>
+  <td class="gravatar">
+    <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+  </td>
+  <td class="announcement">
+    <span class="user">
+      <%= link_to feed_item.user.name, feed_item.user %>
+    </span>
+    <span class="content"><%= wrap(feed_item.content) %></span>
+    <span class="timestamp">
+      Created <%= time_ago_in_words(feed_item.created_at) %> ago.
+      Active for <%= pluralize(days_left(feed_item), "more day") %>.
+    </span>
+    <span class="grade">Grade: <%= "6  " if feed_item.grade_6 %>
+                               <%= "7  " if feed_item.grade_7 %>
+                               <%= "8  " if feed_item.grade_8 %>
+    </span>
+  </td>
+  <% if current_user?(feed_item.user) %>
+  <td>
+    <%= link_to "delete", feed_item, :method => :delete,
+                                     :confirm => "You sure?",
+                                     :title => feed_item.content %>
+  </td>
+  <% end %>
+</tr>
+

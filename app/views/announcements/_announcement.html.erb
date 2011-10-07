@@ -1,0 +1,20 @@
+<tr>
+  <td class="announcement">
+    <span class="content"><%= wrap(announcement.content) %></span>
+    <span class="timestamp">
+      Created <%= time_ago_in_words(announcement.created_at) %> ago.
+      Active for <%= pluralize(days_left(announcement), "more day") %>.
+    </span>
+    <span class="grade">Grade: <%= "6  " if announcement.grade_6 %>
+                               <%= "7  " if announcement.grade_7 %>
+                               <%= "8  " if announcement.grade_8 %>
+    </span>
+  </td>
+  <% if current_user?(announcement.user) %>
+  <td class="announcement">
+    <%= link_to "delete", announcement, :method => :delete,
+                                        :confirm => "You sure?",
+                                        :title => announcement.content %>
+  </td>
+  <% end %>
+</tr>

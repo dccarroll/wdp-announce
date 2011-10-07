@@ -1,0 +1,26 @@
+<%= form_for @announcement do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.check_box :grade_6 %>
+    <%= f.label :grade_6 %>
+    <%= f.check_box :grade_7 %>
+    <%= f.label :grade_7 %>
+    <%= f.check_box :grade_8 %>
+    <%= f.label :grade_8 %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %> &nbsp
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
