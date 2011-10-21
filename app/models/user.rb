@@ -82,22 +82,22 @@ class User < ActiveRecord::Base
     end
     
     def grade_6
-      Announcement.where("grade_6 = ? AND start_date >= ? AND end_date <= ?", 
+      Announcement.where("grade_6 = ? AND start_date <= ? AND end_date >= ?", 
                          TRUE, Date.current, Date.current)
     end 
     
     def grade_7
-      Announcement.where("grade_7 = ? AND start_date >= ? AND end_date <= ?", 
+      Announcement.where("grade_7 = ? AND start_date <= ? AND end_date >= ?", 
                          TRUE, Date.current, Date.current)
     end
     
     def grade_8
-      Announcement.where("grade_8 = ? AND start_date >= ? AND end_date <= ?", 
+      Announcement.where("grade_8 = ? AND start_date <= ? AND end_date >= ?", 
                         TRUE, Date.current, Date.current)
     end
     
     def grade_all
-      Announcement.where("start_date >= ? AND end_date <= ?", 
+      Announcement.where("start_date <= ? AND end_date >= ?", 
                         Date.current, Date.current)    
     end
 end
